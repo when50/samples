@@ -9,6 +9,7 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
   let engines = FlutterEngineGroup(name: "multiple-flutters", project: nil)
+    var window:UIWindow?
 
   func application(
     _ application: UIApplication,
@@ -28,20 +29,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         "📣 NOTICE: the memory and CPU costs for Flutter engine groups are significantly less here than in debug builds.  See also: https://github.com/dart-lang/sdk/issues/36097"
       )
     }
+    
+    window = UIWindow(frame: UIScreen.main.bounds)
+    if #available(iOS 13.0, *) {
+        window?.backgroundColor = .systemBackground
+    } else {
+        // Fallback on earlier versions
+        window?.backgroundColor = .white
+    }
+    
+    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+    window?.rootViewController = vc
+    
+    window?.makeKeyAndVisible()
 
     return true
-  }
-
-  func application(
-    _ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession,
-    options: UIScene.ConnectionOptions
-  ) -> UISceneConfiguration {
-    return UISceneConfiguration(
-      name: "Default Configuration", sessionRole: connectingSceneSession.role)
-  }
-
-  func application(
-    _ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>
-  ) {
   }
 }

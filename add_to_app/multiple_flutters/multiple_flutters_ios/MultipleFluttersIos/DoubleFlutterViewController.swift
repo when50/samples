@@ -15,7 +15,13 @@ class DoubleFlutterViewController: UIViewController {
   override func viewDidLoad() {
     addChild(topFlutter)
     addChild(bottomFlutter)
-    let safeFrame = self.view.safeAreaLayoutGuide.layoutFrame
+    let safeFrame: CGRect
+    if #available(iOS 11.0, *) {
+        safeFrame = self.view.safeAreaLayoutGuide.layoutFrame
+    } else {
+        // Fallback on earlier versions
+        safeFrame = self.view.bounds
+    }
     let halfHeight = safeFrame.height / 2.0
     topFlutter.view.frame = CGRect(
       x: safeFrame.minX, y: safeFrame.minY, width: safeFrame.width, height: halfHeight)
