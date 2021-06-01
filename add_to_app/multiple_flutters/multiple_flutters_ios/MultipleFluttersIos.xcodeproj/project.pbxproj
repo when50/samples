@@ -15,6 +15,8 @@
 		0D61B20125BB8FDF00A1A590 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D61B20025BB8FDF00A1A590 /* DataModel.swift */; };
 		0D61B20825BBEA9E00A1A590 /* SingleFlutterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D61B20725BBEA9E00A1A590 /* SingleFlutterViewController.swift */; };
 		0D61B20B25BBF88700A1A590 /* DoubleFlutterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D61B20A25BBF88700A1A590 /* DoubleFlutterViewController.swift */; };
+		5A1476C82666364800E16458 /* FlutterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1476C72666364800E16458 /* FlutterView.m */; };
+		5A1476CB2666383700E16458 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1476CA2666383700E16458 /* FeedViewController.swift */; };
 		DA84F1C17CFA00606F7B401C /* Pods_MultipleFluttersIos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E03DC90CED28B2143B2CFB1 /* Pods_MultipleFluttersIos.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,10 @@
 		0D61B20A25BBF88700A1A590 /* DoubleFlutterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleFlutterViewController.swift; sourceTree = "<group>"; };
 		4E03DC90CED28B2143B2CFB1 /* Pods_MultipleFluttersIos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MultipleFluttersIos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F02FEA4EA8C75406BC5FFC5 /* Pods-MultipleFluttersIos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultipleFluttersIos.release.xcconfig"; path = "Target Support Files/Pods-MultipleFluttersIos/Pods-MultipleFluttersIos.release.xcconfig"; sourceTree = "<group>"; };
+		5A1476C52666364800E16458 /* MultipleFluttersIos-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MultipleFluttersIos-Bridging-Header.h"; sourceTree = "<group>"; };
+		5A1476C62666364800E16458 /* FlutterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlutterView.h; sourceTree = "<group>"; };
+		5A1476C72666364800E16458 /* FlutterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlutterView.m; sourceTree = "<group>"; };
+		5A1476CA2666383700E16458 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		5EE6997543EAE7F85C674231 /* Pods-MultipleFluttersIos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultipleFluttersIos.debug.xcconfig"; path = "Target Support Files/Pods-MultipleFluttersIos/Pods-MultipleFluttersIos.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +73,7 @@
 		0D61B1E025BB8A2300A1A590 /* MultipleFluttersIos */ = {
 			isa = PBXGroup;
 			children = (
+				5A4247372663349D008066D6 /* FlutterView */,
 				0D61B1E125BB8A2300A1A590 /* AppDelegate.swift */,
 				0D61B1E525BB8A2300A1A590 /* HostViewController.swift */,
 				0D61B20025BB8FDF00A1A590 /* DataModel.swift */,
@@ -76,6 +83,7 @@
 				0D61B1EF25BB8A2400A1A590 /* Info.plist */,
 				0D61B20725BBEA9E00A1A590 /* SingleFlutterViewController.swift */,
 				0D61B20A25BBF88700A1A590 /* DoubleFlutterViewController.swift */,
+				5A1476CA2666383700E16458 /* FeedViewController.swift */,
 			);
 			path = MultipleFluttersIos;
 			sourceTree = "<group>";
@@ -87,6 +95,16 @@
 				4F02FEA4EA8C75406BC5FFC5 /* Pods-MultipleFluttersIos.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		5A4247372663349D008066D6 /* FlutterView */ = {
+			isa = PBXGroup;
+			children = (
+				5A1476C62666364800E16458 /* FlutterView.h */,
+				5A1476C72666364800E16458 /* FlutterView.m */,
+				5A1476C52666364800E16458 /* MultipleFluttersIos-Bridging-Header.h */,
+			);
+			path = FlutterView;
 			sourceTree = "<group>";
 		};
 		A2F4F0BD46437369E87BA62F /* Frameworks */ = {
@@ -131,6 +149,7 @@
 				TargetAttributes = {
 					0D61B1DD25BB8A2300A1A590 = {
 						CreatedOnToolsVersion = 12.2;
+						LastSwiftMigration = 1240;
 					};
 				};
 			};
@@ -227,6 +246,8 @@
 				0D61B20125BB8FDF00A1A590 /* DataModel.swift in Sources */,
 				0D61B1E225BB8A2300A1A590 /* AppDelegate.swift in Sources */,
 				0D61B20825BBEA9E00A1A590 /* SingleFlutterViewController.swift in Sources */,
+				5A1476C82666364800E16458 /* FlutterView.m in Sources */,
+				5A1476CB2666383700E16458 /* FeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +395,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MultipleFluttersIos/Info.plist;
@@ -384,6 +406,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dev.flutter.MultipleFluttersIos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MultipleFluttersIos/FlutterView/MultipleFluttersIos-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -395,6 +419,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MultipleFluttersIos/Info.plist;
@@ -405,6 +430,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dev.flutter.MultipleFluttersIos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MultipleFluttersIos/FlutterView/MultipleFluttersIos-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -8,9 +8,9 @@ import UIKit
 /// between them.
 class DoubleFlutterViewController: UIViewController {
   private let topFlutter: SingleFlutterViewController = SingleFlutterViewController(
-    withEntrypoint: "topMain")
+    withEntrypoint: "topMain", libraryURI: nil)
   private let bottomFlutter: SingleFlutterViewController = SingleFlutterViewController(
-    withEntrypoint: "bottomMain")
+    withEntrypoint: "bottomMain", libraryURI: nil)
 
   override func viewDidLoad() {
     addChild(topFlutter)

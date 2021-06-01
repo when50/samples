@@ -33,11 +33,16 @@ class HostViewController: UIViewController, DataModelObserver {
     // SingleFlutterViewController or DoubleFlutterViewController to alternatve
     // between the two.
     if navController.viewControllers.count % 4 == 1 {
-      let vc = SingleFlutterViewController(withEntrypoint: nil)
+      let vc = SingleFlutterViewController(withEntrypoint: "cell1", libraryURI: nil)
       navController.pushViewController(vc, animated: true)
     } else {
       let vc = DoubleFlutterViewController()
       navController.pushViewController(vc, animated: true)
     }
   }
+    
+    @IBAction func onFeed() {
+        let feed = FeedViewController()
+        navigationController?.pushViewController(feed, animated: true)
+    }
 }

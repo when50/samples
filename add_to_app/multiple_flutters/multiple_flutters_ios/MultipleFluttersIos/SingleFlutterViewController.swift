@@ -13,9 +13,10 @@ import Foundation
 class SingleFlutterViewController: FlutterViewController, DataModelObserver {
   private var channel: FlutterMethodChannel?
 
-  init(withEntrypoint entryPoint: String?) {
+  @objc
+  init(withEntrypoint entryPoint: String?, libraryURI: String?) {
     let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-    let newEngine = appDelegate.engines.makeEngine(withEntrypoint: entryPoint, libraryURI: nil)
+    let newEngine = appDelegate.engines.makeEngine(withEntrypoint: entryPoint, libraryURI: libraryURI)
     super.init(engine: newEngine, nibName: nil, bundle: nil)
     DataModel.shared.addObserver(observer: self)
   }
@@ -39,6 +40,9 @@ class SingleFlutterViewController: FlutterViewController, DataModelObserver {
     channel = FlutterMethodChannel(
       name: "multiple-flutters", binaryMessenger: self.engine!.binaryMessenger)
     channel!.invokeMethod("setCount", arguments: DataModel.shared.count)
+    if (self.navigationController == nil) {
+        return;
+    }
     let navController = self.navigationController!
     channel!.setMethodCallHandler { (call: FlutterMethodCall, result: @escaping FlutterResult) in
       if call.method == "incrementCount" {
