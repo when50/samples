@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithController:(UIViewController *)controller
                     viewIdentifier:(NSString *)viewIdentifier;
+- (void)updateView:(NSString *)viewName;
 
 @end
 

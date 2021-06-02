@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'cell1.dart';
+import 'flutter_embeded_widget.dart';
 
 void main() => runApp(MyApp(Colors.blue));
 
@@ -15,7 +15,7 @@ void topMain() => runApp(MyApp(Colors.green));
 void bottomMain() => runApp(MyApp(Colors.purple));
 
 @pragma('vm:entry-point')
-void cell2() => runApp(Cell1(Colors.green));
+void cell2() => runApp(FlutterEmbededWidget());
 
 class MyApp extends StatelessWidget {
   MyApp(this.color);

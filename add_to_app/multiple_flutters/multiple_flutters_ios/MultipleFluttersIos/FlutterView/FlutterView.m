@@ -11,7 +11,7 @@
 @interface FlutterView ()
 
 @property (nonatomic, weak) UIViewController    *embedingController;
-@property (nonatomic, weak) UIViewController    *embededController;
+@property (nonatomic, weak) FlutterContainerViewController    *embededController;
 @property (nonatomic, copy) NSString            *viewIdentifier;
 
 @end
@@ -26,6 +26,10 @@
         _viewIdentifier = viewIdentifier;
     }
     return self;
+}
+
+- (void)updateView:(NSString *)viewName {
+    [self.embededController updateView:viewName];
 }
 
 - (void)didMoveToWindow {
@@ -45,7 +49,7 @@
 #pragma mark - private
 - (void)loadFlutterView {
     
-    SingleFlutterViewController *vc = [[SingleFlutterViewController alloc] initWithEntrypoint:self.viewIdentifier libraryURI:nil];
+    FlutterContainerViewController *vc = [[FlutterContainerViewController alloc] initWithEntrypoint:self.viewIdentifier libraryURI:nil];
     
     [self.embedingController addChildViewController:vc];
     

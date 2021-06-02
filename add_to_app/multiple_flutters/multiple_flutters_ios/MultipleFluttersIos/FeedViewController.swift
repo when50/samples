@@ -8,18 +8,27 @@
 import UIKit
 
 class FeedViewController: UITableViewController {
+    weak var flutterView: FlutterView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let v = FlutterView(controller: self, viewIdentifier: "cell2")
         v.frame = CGRect(x: 10, y: 30, width: 100, height: 100)
         view.addSubview(v)
+        flutterView = v
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "UpdateView", style: .done, target: self, action: #selector(updateView))
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    @objc
+    func updateView() {
+        flutterView?.update("CCC")
     }
 
     // MARK: - Table view data source

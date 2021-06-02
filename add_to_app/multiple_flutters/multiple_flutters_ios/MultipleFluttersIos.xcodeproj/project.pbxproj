@@ -17,6 +17,7 @@
 		0D61B20B25BBF88700A1A590 /* DoubleFlutterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D61B20A25BBF88700A1A590 /* DoubleFlutterViewController.swift */; };
 		5A1476C82666364800E16458 /* FlutterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1476C72666364800E16458 /* FlutterView.m */; };
 		5A1476CB2666383700E16458 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1476CA2666383700E16458 /* FeedViewController.swift */; };
+		5A1476FB2667A18700E16458 /* FlutterContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1476FA2667A18700E16458 /* FlutterContainerViewController.swift */; };
 		DA84F1C17CFA00606F7B401C /* Pods_MultipleFluttersIos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E03DC90CED28B2143B2CFB1 /* Pods_MultipleFluttersIos.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		5A1476C62666364800E16458 /* FlutterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlutterView.h; sourceTree = "<group>"; };
 		5A1476C72666364800E16458 /* FlutterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlutterView.m; sourceTree = "<group>"; };
 		5A1476CA2666383700E16458 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		5A1476FA2667A18700E16458 /* FlutterContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterContainerViewController.swift; sourceTree = "<group>"; };
 		5EE6997543EAE7F85C674231 /* Pods-MultipleFluttersIos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultipleFluttersIos.debug.xcconfig"; path = "Target Support Files/Pods-MultipleFluttersIos/Pods-MultipleFluttersIos.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +86,7 @@
 				0D61B20725BBEA9E00A1A590 /* SingleFlutterViewController.swift */,
 				0D61B20A25BBF88700A1A590 /* DoubleFlutterViewController.swift */,
 				5A1476CA2666383700E16458 /* FeedViewController.swift */,
+				5A1476FA2667A18700E16458 /* FlutterContainerViewController.swift */,
 			);
 			path = MultipleFluttersIos;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				0D61B20B25BBF88700A1A590 /* DoubleFlutterViewController.swift in Sources */,
 				0D61B1E625BB8A2300A1A590 /* HostViewController.swift in Sources */,
 				0D61B20125BB8FDF00A1A590 /* DataModel.swift in Sources */,
+				5A1476FB2667A18700E16458 /* FlutterContainerViewController.swift in Sources */,
 				0D61B1E225BB8A2300A1A590 /* AppDelegate.swift in Sources */,
 				0D61B20825BBEA9E00A1A590 /* SingleFlutterViewController.swift in Sources */,
 				5A1476C82666364800E16458 /* FlutterView.m in Sources */,
