@@ -11,7 +11,8 @@ class FeedViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let v = FlutterView(frame: CGRect(x: 20, y: 20, width: 300, height: 400))
+        let v = FlutterView(controller: self, viewIdentifier: "cell2")
+        v.frame = CGRect(x: 10, y: 30, width: 100, height: 100)
         view.addSubview(v)
 
         // Uncomment the following line to preserve selection between presentations

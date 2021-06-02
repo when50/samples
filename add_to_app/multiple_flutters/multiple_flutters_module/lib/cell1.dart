@@ -12,7 +12,7 @@ class Cell1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Cell1',
+      title: 'Cell2',
       theme: ThemeData(
         primaryColor: this.color
       ),
@@ -25,7 +25,7 @@ class Content1 extends StatelessWidget {
 @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("Cell1"),
+      child: Text("Cell1050"),
     );
   }
 }

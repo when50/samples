@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'cell1.dart';
 
 void main() => runApp(MyApp(Colors.blue));
 
@@ -12,6 +13,9 @@ void topMain() => runApp(MyApp(Colors.green));
 
 @pragma('vm:entry-point')
 void bottomMain() => runApp(MyApp(Colors.purple));
+
+@pragma('vm:entry-point')
+void cell2() => runApp(Cell1(Colors.green));
 
 class MyApp extends StatelessWidget {
   MyApp(this.color);

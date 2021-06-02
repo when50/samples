@@ -45,7 +45,7 @@
 #pragma mark - private
 - (void)loadFlutterView {
     
-    SingleFlutterViewController *vc = [[SingleFlutterViewController alloc] initWithEntrypoint:@"cell1" libraryURI:@"cell1.dart"];
+    SingleFlutterViewController *vc = [[SingleFlutterViewController alloc] initWithEntrypoint:self.viewIdentifier libraryURI:nil];
     
     [self.embedingController addChildViewController:vc];
     
