@@ -8,6 +8,7 @@
 #import "FlutterView.h"
 #import "MultipleFluttersIos-Swift.h"
 
+
 @interface FlutterView ()
 
 @property (nonatomic, weak) UIViewController    *embedingController;
@@ -17,6 +18,12 @@
 @end
 
 @implementation FlutterView
+
+- (void)dealloc {
+    NSTimeInterval spend = [[NSDate new] timeIntervalSinceDate:FlutterContainerViewController.deinitTime];
+    NSLog(@">>> FlutterView deinit");
+    NSLog(@">>> %f spend dealloc", spend);
+}
 
 - (instancetype)initWithController:(UIViewController *)controller
                     viewIdentifier:(NSString *)viewIdentifier {
@@ -34,10 +41,9 @@
 
 - (void)didMoveToWindow {
     if (self.window) {
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
+        if (self.embededController == nil) {
             [self loadFlutterView];
-        });
+        }
     }
 }
 

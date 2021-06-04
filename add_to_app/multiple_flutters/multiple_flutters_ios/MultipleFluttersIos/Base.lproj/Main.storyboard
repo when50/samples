@@ -70,9 +70,8 @@
                                     <action selector="onAddCount" destination="BYZ-38-t0r" eventType="touchUpInside" id="QYB-J4-vI2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CS5-hq-tEX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CS5-hq-tEX">
                                 <rect key="frame" x="356" y="685" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Feed"/>
                                 <connections>
                                     <action selector="onFeed" destination="BYZ-38-t0r" eventType="touchUpInside" id="d8l-Em-FQn"/>
@@ -83,9 +82,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="CgZ-JE-gda" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1Dz-Aq-10E"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CS5-hq-tEX" secondAttribute="trailing" constant="24" id="50T-DK-7bS"/>
                             <constraint firstItem="vVY-o2-UDW" firstAttribute="top" secondItem="Ohd-Fe-iAE" secondAttribute="bottom" constant="2" id="EqG-G1-3gr"/>
                             <constraint firstItem="vVY-o2-UDW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="IDv-xt-QVd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vVY-o2-UDW" secondAttribute="trailing" constant="20" id="IQ1-E7-q9T"/>
+                            <constraint firstItem="Ohd-Fe-iAE" firstAttribute="top" secondItem="CS5-hq-tEX" secondAttribute="bottom" constant="57" id="T4T-Or-Vtt"/>
                             <constraint firstItem="dKf-iz-CSn" firstAttribute="leading" secondItem="CgZ-JE-gda" secondAttribute="trailing" constant="8" symbolic="YES" id="ZKK-wt-eqr"/>
                             <constraint firstItem="dKf-iz-CSn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="hUq-Je-pdK"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ohd-Fe-iAE" secondAttribute="trailing" constant="20" id="wT9-j5-NMO"/>

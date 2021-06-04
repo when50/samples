@@ -12,6 +12,8 @@ import Foundation
 /// instead of inheritence.
 class FlutterContainerViewController: FlutterViewController, DataModelObserver {
   private var channel: FlutterMethodChannel?
+@objc
+    static var deinitTime: Date?
 
   @objc
   init(withEntrypoint entryPoint: String?, libraryURI: String?) {
@@ -27,7 +29,9 @@ class FlutterContainerViewController: FlutterViewController, DataModelObserver {
     }
 
   deinit {
+    NSLog(">>> FlutterViewController deinit")
     DataModel.shared.removeObserver(observer: self)
+    FlutterContainerViewController.deinitTime = Date()
   }
 
   required init(coder aDecoder: NSCoder) {
