@@ -8,21 +8,21 @@
 #import "FlutterView.h"
 #import "MultipleFluttersIos-Swift.h"
 
-@interface InvokeObject: NSObject
+@interface UpdateViewObject: NSObject
 
-@property (nonatomic, copy)     NSString    *invokeMethod;
-@property (nonatomic, strong)   id          arguments;
+@property (nonatomic, copy)     NSString        *viewName;
+@property (nonatomic, strong)   NSDictionary    *viewModel;
 
-+ (instancetype)object:(NSString *)invokeMethod arguments:(id)arguments;
++ (instancetype)viewName:(NSString *)viewName viewModel:(NSDictionary *)viewModel;
 
 @end
 
-@implementation InvokeObject
+@implementation UpdateViewObject
 
-+ (instancetype)object:(NSString *)invokeMethod arguments:(id)arguments {
-    InvokeObject *obj = [InvokeObject new];
-    obj.invokeMethod = invokeMethod;
-    obj.arguments = arguments;
++ (instancetype)viewName:(NSString *)viewName viewModel:(NSDictionary *)viewModel {
+    UpdateViewObject *obj = [UpdateViewObject new];
+    obj.viewName = viewName;
+    obj.viewModel = viewModel;
     return obj;
 }
 
@@ -58,11 +58,11 @@
     return self;
 }
 
-- (void)updateView:(NSString *)viewName viewModel:(id)viewModel {
+- (void)updateView:(NSString *)viewName viewModel:(NSDictionary *)viewModel {
     if (self.embededController) {
-        [self.embededController updateView:viewName];
+        [self.embededController updateViewWithViewName:viewName viewModel:viewModel];
     } else {
-        [_invokeList addObject:[InvokeObject object:@"updateView" arguments:viewName]];
+        [_invokeList addObject:[UpdateViewObject viewName:viewName viewModel:viewModel]];
     }
 }
 
@@ -89,8 +89,8 @@
             [self loadFlutterView];
         }
         
-        for (InvokeObject *obj in self.invokeList) {
-            [self.embededController updateView:obj.arguments];
+        for (UpdateViewObject *obj in self.invokeList) {
+            [self.embededController updateViewWithViewName:obj.viewName viewModel:obj.viewModel];
         }
         [self.invokeList removeAllObjects];
         

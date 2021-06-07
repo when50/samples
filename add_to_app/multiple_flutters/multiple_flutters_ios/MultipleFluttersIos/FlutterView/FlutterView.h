@@ -15,7 +15,7 @@ typedef void (^FlutterCallBlock)(NSString *, id);
 
 - (instancetype)initWithController:(UIViewController *)controller
                     viewIdentifier:(NSString *)viewIdentifier;
-- (void)updateView:(NSString *)viewName viewModel:(id)viewModel;
+- (void)updateView:(NSString *)viewName viewModel:(NSDictionary *)viewModel;
 - (void)setFlutterCallBlock:(FlutterCallBlock)block;
 
 @end

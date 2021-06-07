@@ -36,8 +36,12 @@ class FlutterContainerViewController: FlutterViewController, DataModelObserver {
   }
     
     @objc
-    func updateView(_ viewName: String) {
-        channel!.invokeMethod("updateView", arguments: viewName)
+    func updateView(viewName: String, viewModel: [String: AnyHashable]) {
+        let newViewModel: [String: AnyHashable] = [
+            "viewName": viewName,
+            "viewModel": viewModel
+        ]
+        channel!.invokeMethod("updateView", arguments: newViewModel)
     }
 
   deinit {
