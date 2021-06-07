@@ -19,6 +19,9 @@
 		5A1476CB2666383700E16458 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1476CA2666383700E16458 /* FeedViewController.swift */; };
 		5A1476FB2667A18700E16458 /* FlutterContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1476FA2667A18700E16458 /* FlutterContainerViewController.swift */; };
 		5A1477792669C13900E16458 /* FlutterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1477782669C13900E16458 /* FlutterTableViewCell.m */; };
+		5A89484A266B6D140059B91E /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A894849266B6D140059B91E /* data.json */; };
+		5A89484E266B774C0059B91E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A89484D266B774C0059B91E /* Model.swift */; };
+		5A894851266B7AEE0059B91E /* recommend.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A894850266B7AEE0059B91E /* recommend.json */; };
 		DA84F1C17CFA00606F7B401C /* Pods_MultipleFluttersIos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E03DC90CED28B2143B2CFB1 /* Pods_MultipleFluttersIos.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +45,9 @@
 		5A1476FA2667A18700E16458 /* FlutterContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterContainerViewController.swift; sourceTree = "<group>"; };
 		5A1477772669C13900E16458 /* FlutterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlutterTableViewCell.h; sourceTree = "<group>"; };
 		5A1477782669C13900E16458 /* FlutterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlutterTableViewCell.m; sourceTree = "<group>"; };
+		5A894849266B6D140059B91E /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
+		5A89484D266B774C0059B91E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		5A894850266B7AEE0059B91E /* recommend.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = recommend.json; sourceTree = "<group>"; };
 		5EE6997543EAE7F85C674231 /* Pods-MultipleFluttersIos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultipleFluttersIos.debug.xcconfig"; path = "Target Support Files/Pods-MultipleFluttersIos/Pods-MultipleFluttersIos.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +95,9 @@
 				0D61B20725BBEA9E00A1A590 /* SingleFlutterViewController.swift */,
 				0D61B20A25BBF88700A1A590 /* DoubleFlutterViewController.swift */,
 				5A1476CA2666383700E16458 /* FeedViewController.swift */,
+				5A89484D266B774C0059B91E /* Model.swift */,
+				5A894849266B6D140059B91E /* data.json */,
+				5A894850266B7AEE0059B91E /* recommend.json */,
 			);
 			path = MultipleFluttersIos;
 			sourceTree = "<group>";
@@ -187,6 +196,8 @@
 				0D61B1EE25BB8A2400A1A590 /* LaunchScreen.storyboard in Resources */,
 				0D61B1EB25BB8A2400A1A590 /* Assets.xcassets in Resources */,
 				0D61B1E925BB8A2300A1A590 /* Main.storyboard in Resources */,
+				5A89484A266B6D140059B91E /* data.json in Resources */,
+				5A894851266B7AEE0059B91E /* recommend.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +265,7 @@
 				0D61B20125BB8FDF00A1A590 /* DataModel.swift in Sources */,
 				5A1477792669C13900E16458 /* FlutterTableViewCell.m in Sources */,
 				5A1476FB2667A18700E16458 /* FlutterContainerViewController.swift in Sources */,
+				5A89484E266B774C0059B91E /* Model.swift in Sources */,
 				0D61B1E225BB8A2300A1A590 /* AppDelegate.swift in Sources */,
 				0D61B20825BBEA9E00A1A590 /* SingleFlutterViewController.swift in Sources */,
 				5A1476C82666364800E16458 /* FlutterView.m in Sources */,

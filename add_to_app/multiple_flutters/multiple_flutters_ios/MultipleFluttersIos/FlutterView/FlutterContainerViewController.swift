@@ -12,8 +12,20 @@ import Foundation
 /// instead of inheritence.
 class FlutterContainerViewController: FlutterViewController, DataModelObserver {
   private var channel: FlutterMethodChannel?
-@objc
-    static var deinitTime: Date?
+  static var cachePool = Set<FlutterContainerViewController>()
+    @objc
+    var flutterInvokeBlock: ((String, Any) -> Void)?
+    
+    @objc
+    static func viewController() -> FlutterContainerViewController? {
+        guard cachePool.count > 0 else { return nil }
+        return cachePool.removeFirst()
+    }
+    
+    @objc
+    static func cache(viewController: FlutterContainerViewController) {
+        cachePool.insert(viewController)
+    }
 
   @objc
   init(withEntrypoint entryPoint: String?, libraryURI: String?) {
@@ -31,7 +43,6 @@ class FlutterContainerViewController: FlutterViewController, DataModelObserver {
   deinit {
     NSLog(">>> FlutterViewController deinit")
     DataModel.shared.removeObserver(observer: self)
-    FlutterContainerViewController.deinitTime = Date()
   }
 
   required init(coder aDecoder: NSCoder) {
@@ -53,18 +64,22 @@ class FlutterContainerViewController: FlutterViewController, DataModelObserver {
         return;
     }
     let navController = self.navigationController!
-    channel!.setMethodCallHandler { (call: FlutterMethodCall, result: @escaping FlutterResult) in
-      if call.method == "incrementCount" {
-        DataModel.shared.count = DataModel.shared.count + 1
-        result(nil)
-      } else if call.method == "next" {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "NativeViewCount")
-        navController.pushViewController(vc, animated: true)
-        result(nil)
-      } else {
-        result(FlutterMethodNotImplemented)
-      }
+    channel!.setMethodCallHandler { [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) in
+        self?.flutterInvokeBlock?(call.method, call.arguments)
+//        if call.method == "click" {
+//            print("flutter call click")
+//        }
+//      else if call.method == "incrementCount" {
+//        DataModel.shared.count = DataModel.shared.count + 1
+//        result(nil)
+//      } else if call.method == "next" {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "NativeViewCount")
+//        navController.pushViewController(vc, animated: true)
+//        result(nil)
+//      } else {
+//        result(FlutterMethodNotImplemented)
+//      }
     }
   }
 }

@@ -6,32 +6,44 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class FeedViewController: UITableViewController {
     let flutterCellReuseIdentifier = "FlutterTableViewCell"
+    var response: Response?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView .register(FlutterTableViewCell.self, forCellReuseIdentifier: flutterCellReuseIdentifier)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        loadData()
+    }
+    
+    private func loadData() {
+        let file = Bundle.main.path(forResource: "recommend", ofType: "json")!
+        do {
+            let text = try String(contentsOf: URL(fileURLWithPath: file))
+            let response = Response(JSONString: text)
+            self.response = response
+        } catch {
+            
+        }
+        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1;
+        return response?.data?.modules?.count ?? 0;
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10;
+        guard let modules = response?.data?.modules else { return 0 }
+        guard modules.count > section else { return 0 }
+        return modules[section].data?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,6 +52,16 @@ class FeedViewController: UITableViewController {
         if let cell = cell as? FlutterTableViewCell {
             if cell.flutterView == nil {
                 cell.flutterView = FlutterView(controller: self, viewIdentifier: "cell2")
+            }
+            cell.flutterView?.setFlutterCall({ (method, arguments) in
+                print("flutter invokeXXX \(method)")
+            })
+            
+            if let modules = response?.data?.modules, modules.count > indexPath.section {
+                if let cells = modules[indexPath.section].data, cells.count > indexPath.row {
+                    let cellModel = cells[indexPath.row];
+                    cell.flutterView?.update("\(cellModel.style)", viewModel: NSObject())
+                }
             }
         }
 
