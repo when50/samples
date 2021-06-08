@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:multiple_flutters_module/models/four_item_model.dart';
+import 'package:multiple_flutters_module/models/one_item_model.dart';
 
 import 'four_item_box.dart';
 import 'home_one_item_box.dart';
@@ -37,8 +39,8 @@ class _FlutterContentState extends State<FlutterContentWidget> {
     _contentWidget = Center(
         child: Column(
           children: [
-            GestureDetector(child: FourItemsBox(), onTap: () => invokeTap(),),
-            HomeOneItemBox(),
+            GestureDetector(child: FourItemsBox(FourtItems()), onTap: () => invokeTap(),),
+            HomeOneItemBox(OneItemModel()),
           ],
           mainAxisSize: MainAxisSize.min,
         )
@@ -46,15 +48,18 @@ class _FlutterContentState extends State<FlutterContentWidget> {
     _channel = MethodChannel("setup-content");
     _channel.setMethodCallHandler((MethodCall call) async {
       if (call.method == "updateView") {
-        print("${call.arguments}");
         Map map = call.arguments as Map;
         setState(() {
+          var modelMap = Map<String, dynamic>.from(map["viewModel"]);
           switch (map["viewName"] as String) {
             case "10":
-            _contentWidget = FourItemsBox();
+            var model = FourtItems.fromJson(modelMap);
+            print("fouteritems: $model");
+            _contentWidget = FourItemsBox(model);
             break;
             case "9":
-            _contentWidget = HomeOneItemBox();
+            var model = OneItemModel.fromJson(modelMap);
+            _contentWidget = HomeOneItemBox(model);
             break;
           }
           // _contentWidget = Text("2" + call.arguments);

@@ -1,32 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:multiple_flutters_module/models/four_item_model.dart';
 
 class FourItemsBox extends StatelessWidget {
+  FourtItems model;
+  FourItemsBox(this.model);
+
   @override
   Widget build(BuildContext context) {
+    print("@@@@ ${model}");
+    List<VerticalBook> books = model.items.map((e) => VerticalBook(
+            imageUrl: e.cover, 
+            title: e.title, 
+            score: "9")).toList();
     return Padding(
       child: Row(
-        children: [
-          VerticalBook(
-            imageUrl: "http://s.dyreader.cn/g/9a/a4/1383975598143066656_360_480_poster.jpeg", 
-            title: "女侠，你要相公不要", 
-            score: "9",
-          ),
-          VerticalBook(
-            imageUrl: "http://s.dyreader.cn/g/9a/a4/1383975598143066656_360_480_poster.jpeg", 
-            title: "女侠，你要相公不要", 
-            score: "9",
-          ),
-          VerticalBook(
-            imageUrl: "http://s.dyreader.cn/g/9a/a4/1383975598143066656_360_480_poster.jpeg", 
-            title: "女侠，你要相公不要", 
-            score: "9",
-          ),
-          VerticalBook(
-            imageUrl: "http://s.dyreader.cn/g/9a/a4/1383975598143066656_360_480_poster.jpeg", 
-            title: "女侠，你要相公不要", 
-            score: "9",
-          ),
-        ],
+        children: books,
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
       ),

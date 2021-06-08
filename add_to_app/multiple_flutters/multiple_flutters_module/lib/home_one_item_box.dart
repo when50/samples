@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:multiple_flutters_module/models/one_item_model.dart';
 
 class HomeOneItemBox extends StatelessWidget {
+  OneItemModel model;
+  HomeOneItemBox(this.model);
+
   @override
   Widget build(BuildContext context) {
     num imgWidth = (MediaQuery.of(context).size.width - 115) / 4;
@@ -9,7 +13,7 @@ class HomeOneItemBox extends StatelessWidget {
       child: Row(
         children: [
           Image(
-            image: NetworkImage("http://s.dyreader.cn/g/37/48/1369533058094487880_360_480_poster.jpeg"),
+            image: NetworkImage(model.items.first.cover),
             width: imgWidth,
           ),
           Padding(
@@ -17,7 +21,7 @@ class HomeOneItemBox extends StatelessWidget {
               child:Column(
                 children: [
                   Text(
-                    "末日之神魔竞技场",
+                    model.items.first.title,
                     style: TextStyle(
                       color: Color(0xff333333),
                       fontSize: 16,
