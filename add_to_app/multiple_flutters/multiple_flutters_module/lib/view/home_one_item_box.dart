@@ -9,6 +9,7 @@ class HomeOneItemBox extends StatelessWidget implements SupportTap {
 
   @override
   Widget build(BuildContext context) {
+    print("$model");
     num imgWidth = (MediaQuery.of(context).size.width - 115) / 4;
     num textWidth = (MediaQuery.of(context).size.width - 35 - imgWidth - 55);
     return Padding(
