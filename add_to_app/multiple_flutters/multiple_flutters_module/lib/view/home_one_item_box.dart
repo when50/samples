@@ -1,16 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:multiple_flutters_module/models/one_item_model.dart';
+import 'package:multiple_flutters_module/view/support_tap.dart';
 
-class HomeOneItemBox extends StatelessWidget {
-  OneItemModel model;
-  HomeOneItemBox(this.model);
+class HomeOneItemBox extends StatelessWidget implements SupportTap {
+  final OneItemModel model;
+  final Function tapInvoke;
+  HomeOneItemBox(this.model, this.tapInvoke);
 
   @override
   Widget build(BuildContext context) {
     num imgWidth = (MediaQuery.of(context).size.width - 115) / 4;
     num textWidth = (MediaQuery.of(context).size.width - 35 - imgWidth - 55);
     return Padding(
-      child: Row(
+      child: GestureDetector(
+        child: OneItemContentBox(imgWidth, textWidth, model),
+        onTap: () => invokeTap()
+      ),
+      padding: EdgeInsets.symmetric(horizontal: 35),
+    );
+  }
+
+  @override
+  void invokeTap() {
+    tapInvoke();
+  }
+}
+
+class OneItemContentBox extends StatelessWidget {
+  num imgWidth;
+  num textWidth;
+  OneItemModel model;
+  OneItemContentBox(this.imgWidth, this.textWidth, this.model);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
         children: [
           Image(
             image: NetworkImage(model.items.first.cover),
@@ -46,8 +70,6 @@ class HomeOneItemBox extends StatelessWidget {
           )
         ],
         crossAxisAlignment: CrossAxisAlignment.start,
-      ),
-      padding: EdgeInsets.symmetric(horizontal: 35),
-    );
+      );
   }
 }

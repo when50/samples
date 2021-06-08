@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:multiple_flutters_module/models/four_item_model.dart';
+import 'package:multiple_flutters_module/view/support_tap.dart';
 
-class FourItemsBox extends StatelessWidget {
+class FourItemsBox extends StatelessWidget implements SupportChildTap {
+  Function(int) childTapInvoke;
   FourtItems model;
-  FourItemsBox(this.model);
+  FourItemsBox(this.model, this.childTapInvoke);
 
   @override
   Widget build(BuildContext context) {
-    print("@@@@ ${model}");
-    List<VerticalBook> books = model.items.map((e) => VerticalBook(
-            imageUrl: e.cover, 
-            title: e.title, 
-            score: "9")).toList();
+    int childIndex = 0;
+    List<Widget> books = model.items.map((e) {
+      num arg = childIndex;
+      childIndex += 1;
+      return new GestureDetector(
+              child: VerticalBook(
+                imageUrl: e.cover, 
+                title: e.title, 
+                score: "9"
+              ),
+              onTap: () => invokeTapChild(arg),
+            );
+    }).toList();
     return Padding(
       child: Row(
         children: books,
@@ -22,6 +32,11 @@ class FourItemsBox extends StatelessWidget {
         horizontal: 35.0
       )
     );
+  }
+
+  @override
+  void invokeTapChild(int atIndex) {
+    childTapInvoke(atIndex);
   }
 }
 

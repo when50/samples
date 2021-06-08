@@ -53,8 +53,26 @@ class FeedViewController: UITableViewController {
             if cell.flutterView == nil {
                 cell.flutterView = FlutterView(controller: self, viewIdentifier: "cell2")
             }
-            cell.flutterView?.setFlutterCall({ (method, arguments) in
-                print("flutter invokeXXX \(method)")
+            cell.flutterView?.setFlutterCall({ [weak self] (method, arguments) in
+                var message = ""
+                
+                switch method {
+                case "clickView":
+                    message = "click view";
+                    break;
+                case "clickComponent":
+                    message = "click child at index \(arguments)";
+                    break;
+                default:
+                    message = "flutter invoke \(method)";
+                    break;
+                }
+                
+                let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: { (action) in
+                    
+                }))
+                self?.present(alert, animated: true, completion: nil)
             })
             
             if let modules = response?.data?.modules, modules.count > indexPath.section {

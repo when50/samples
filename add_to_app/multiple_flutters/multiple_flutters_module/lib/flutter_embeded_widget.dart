@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:multiple_flutters_module/models/four_item_model.dart';
 import 'package:multiple_flutters_module/models/one_item_model.dart';
 
-import 'four_item_box.dart';
-import 'home_one_item_box.dart';
+import 'view/four_item_box.dart';
+import 'view/home_one_item_box.dart';
 
 class FlutterEmbededWidget extends StatelessWidget {
 
@@ -39,8 +39,8 @@ class _FlutterContentState extends State<FlutterContentWidget> {
     _contentWidget = Center(
         child: Column(
           children: [
-            GestureDetector(child: FourItemsBox(FourtItems()), onTap: () => invokeTap(),),
-            HomeOneItemBox(OneItemModel()),
+            FourItemsBox(FourtItems(), (int childIndex) => invokeChildTap(0)),
+            HomeOneItemBox(OneItemModel(), () => invokeTap())
           ],
           mainAxisSize: MainAxisSize.min,
         )
@@ -53,14 +53,13 @@ class _FlutterContentState extends State<FlutterContentWidget> {
           var modelMap = Map<String, dynamic>.from(map["viewModel"]);
           switch (map["viewName"] as String) {
             case "10":
-            var model = FourtItems.fromJson(modelMap);
-            print("fouteritems: $model");
-            _contentWidget = FourItemsBox(model);
-            break;
+              var model = FourtItems.fromJson(modelMap);
+              _contentWidget = FourItemsBox(model, (int childIndex) => invokeChildTap(childIndex));
+              break;
             case "9":
-            var model = OneItemModel.fromJson(modelMap);
-            _contentWidget = HomeOneItemBox(model);
-            break;
+              var model = OneItemModel.fromJson(modelMap);
+              _contentWidget = HomeOneItemBox(model, () => invokeTap());
+              break;
           }
           // _contentWidget = Text("2" + call.arguments);
         });
@@ -82,6 +81,10 @@ class _FlutterContentState extends State<FlutterContentWidget> {
   }
 
   void invokeTap() {
-    _channel.invokeMethod("click");
+    _channel.invokeMethod("clickView");
+  }
+
+  void invokeChildTap(int childIndex) {
+    _channel.invokeMethod("clickComponent", childIndex);
   }
 }
