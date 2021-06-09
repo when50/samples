@@ -12,6 +12,7 @@ dependencies:
 
   cupertino_icons: ^1.0.0
   expressions: ^0.2.2
+  scroll_to_index: any
 
 dev_dependencies:
   flutter_test:

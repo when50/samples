@@ -16,7 +16,7 @@ class FourItemsBox extends StatelessWidget implements SupportChildTap {
       return new GestureDetector(
               child: VerticalBook(
                 imageUrl: e.cover, 
-                title: e.title, 
+                title: e.title + "\n", 
                 score: "9"
               ),
               onTap: () => invokeTapChild(arg),
@@ -27,6 +27,7 @@ class FourItemsBox extends StatelessWidget implements SupportChildTap {
         children: books,
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
       ),
       padding: const EdgeInsets.symmetric(
         horizontal: 35.0
@@ -53,9 +54,12 @@ class VerticalBook extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          Image(
-            image: NetworkImage(imageUrl),
-            width: (width),
+          ClipRRect(
+            child: Image(
+              image: NetworkImage(imageUrl),
+              width: (width),
+            ),
+            borderRadius: BorderRadius.circular(2),
           ),
           ConstrainedBox(
             child: Text(

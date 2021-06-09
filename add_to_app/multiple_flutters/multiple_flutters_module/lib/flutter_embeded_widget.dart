@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:multiple_flutters_module/models/four_item_model.dart';
 import 'package:multiple_flutters_module/models/one_item_model.dart';
+import 'package:multiple_flutters_module/view/category_filter_box.dart';
 
 import 'view/four_item_box.dart';
 import 'view/home_one_item_box.dart';
@@ -37,9 +38,11 @@ class _FlutterContentState extends State<FlutterContentWidget> {
   void initState() {
     super.initState();
     _contentWidget = Center(
-        child: Column(
+        child: 
+        Column(
           children: [
-            FourItemsBox(FourtItems.fromJsonString(
+            CategoryFilterBox(["filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0"]),
+            /*FourItemsBox(FourtItems.fromJsonString(
               '''
               {
 	"style": 10,
@@ -85,7 +88,7 @@ class _FlutterContentState extends State<FlutterContentWidget> {
 					"finish": true
 				}]
 			}
-            '''), () => invokeTap())
+            '''), () => invokeTap())*/
           ],
           mainAxisSize: MainAxisSize.min,
         )
