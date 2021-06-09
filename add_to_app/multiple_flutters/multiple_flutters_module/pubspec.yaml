@@ -12,7 +12,7 @@ dependencies:
 
   cupertino_icons: ^1.0.0
   expressions: ^0.2.2
-  scroll_to_index: any
+  scrollable_positioned_list: ^0.1.10
 
 dev_dependencies:
   flutter_test:
@@ -23,6 +23,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - images/channel_filter.png
 
   module:
     androidX: true

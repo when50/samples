@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:multiple_flutters_module/models/four_item_model.dart';
 import 'package:multiple_flutters_module/models/one_item_model.dart';
+import 'package:multiple_flutters_module/view/category_desc_box.dart';
 import 'package:multiple_flutters_module/view/category_filter_box.dart';
 
 import 'view/four_item_box.dart';
@@ -41,8 +42,19 @@ class _FlutterContentState extends State<FlutterContentWidget> {
         child: 
         Column(
           children: [
-            CategoryFilterBox(["filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0", "filter0"]),
-            /*FourItemsBox(FourtItems.fromJsonString(
+            ConstrainedBox(
+              child: CategoryDescBox(desc: "zhizhujiao"),
+              constraints: BoxConstraints(minHeight: 54),
+            ),
+            CategoryFilterBox(
+              filterTitles: ["title0", "title1", "title2", "title3", "title4", "title5", "title6"],
+              selectedColor: Color(0xffff9510),
+              normalColor: Color(0x99000000),
+              childTapInvoke: (index) {
+                invokeChildTap(index);
+              },
+            ),
+            FourItemsBox(FourtItems.fromJsonString(
               '''
               {
 	"style": 10,
@@ -88,7 +100,7 @@ class _FlutterContentState extends State<FlutterContentWidget> {
 					"finish": true
 				}]
 			}
-            '''), () => invokeTap())*/
+            '''), () => invokeTap())
           ],
           mainAxisSize: MainAxisSize.min,
         )
