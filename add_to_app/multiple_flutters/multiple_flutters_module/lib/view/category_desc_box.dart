@@ -6,12 +6,9 @@ class CategoryDescBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(color: Colors.white),
-      child: Padding(
+    return Padding(
         child: CategoryRoundRectBox(title: desc,),
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
-      ),// )
     );
   }
 }

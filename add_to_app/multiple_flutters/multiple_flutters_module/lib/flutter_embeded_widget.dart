@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:multiple_flutters_module/models/category_one_item_model.dart';
 import 'package:multiple_flutters_module/models/four_item_model.dart';
 import 'package:multiple_flutters_module/models/one_item_model.dart';
 import 'package:multiple_flutters_module/view/category_desc_box.dart';
 import 'package:multiple_flutters_module/view/category_filter_box.dart';
+import 'package:multiple_flutters_module/view/category_one_item_box.dart';
 
 import 'view/four_item_box.dart';
 import 'view/home_one_item_box.dart';
@@ -42,6 +44,18 @@ class _FlutterContentState extends State<FlutterContentWidget> {
         child: 
         Column(
           children: [
+            ConstrainedBox(
+              child: CategoryOneItemBox(
+                viewModel: CategoryOneItemModel(
+                  imageWidth: 81.0,
+                  imageUrl: "http://s.dyreader.cn/g/73/b8/1266208636479230948_360_480.jpeg",
+                  title: "都市潜龙",
+                  score: "8.9分",
+                  desc: "枪林弹雨中归来，赵东成为了高档小区的夜班保安。他原本只想过平凡的生活，奈何那一晚送宿醉的女业主回家，平凡的生活再起波澜……既然不能随波逐流，那就只能覆海移山，潜龙升天！",
+                  info: "西装暴徒·372万字·连载中",
+                ),),
+              constraints: BoxConstraints(minHeight: 200),
+            ),
             ConstrainedBox(
               child: CategoryDescBox(desc: "zhizhujiao"),
               constraints: BoxConstraints(minHeight: 54),
