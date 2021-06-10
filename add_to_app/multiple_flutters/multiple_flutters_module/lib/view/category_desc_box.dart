@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:multiple_flutters_module/view/support_view_model.dart';
 
 class CategoryDescBox extends StatelessWidget {
-  CategoryDescBox({this.desc});
-  final String desc;
+  CategoryDescBox({this.viewModel});
+  final SupportViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-        child: CategoryRoundRectBox(title: desc,),
+        child: CategoryRoundRectBox(title: "",),
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
     );
   }
@@ -33,7 +34,7 @@ class CategoryRoundRectBox extends StatelessWidget {
             ),
             Center(
               child: Text(
-                "hello",
+                title,
                 style: TextStyle(
                   color: Color(0x99000000),
                   fontSize: 11,

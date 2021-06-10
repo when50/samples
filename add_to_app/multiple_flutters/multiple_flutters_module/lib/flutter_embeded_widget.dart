@@ -6,6 +6,7 @@ import 'package:multiple_flutters_module/models/one_item_model.dart';
 import 'package:multiple_flutters_module/view/category_desc_box.dart';
 import 'package:multiple_flutters_module/view/category_filter_box.dart';
 import 'package:multiple_flutters_module/view/category_one_item_box.dart';
+import 'package:multiple_flutters_module/view/support_view_model.dart';
 
 import 'view/four_item_box.dart';
 import 'view/home_one_item_box.dart';
@@ -57,7 +58,7 @@ class _FlutterContentState extends State<FlutterContentWidget> {
               constraints: BoxConstraints(minHeight: 200),
             ),
             ConstrainedBox(
-              child: CategoryDescBox(desc: "zhizhujiao"),
+              child: CategoryDescBox(viewModel: SupportViewModel()),
               constraints: BoxConstraints(minHeight: 54),
             ),
             CategoryFilterBox(
