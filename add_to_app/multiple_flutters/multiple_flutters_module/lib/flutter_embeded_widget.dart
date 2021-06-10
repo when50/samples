@@ -11,6 +11,8 @@ import 'package:multiple_flutters_module/view/support_view_model.dart';
 import 'view/four_item_box.dart';
 import 'view/home_one_item_box.dart';
 
+import 'dart:convert';
+
 class FlutterEmbededWidget extends StatelessWidget {
 
   @override
@@ -41,6 +43,18 @@ class _FlutterContentState extends State<FlutterContentWidget> {
   @override
   void initState() {
     super.initState();
+
+    SupportViewModel desc = SupportViewModel();
+    desc.setDataAndMap(json.decode(
+      '''
+      {
+        "channelFilterDesc":"作品主角大多为特种兵，铁血坚毅"
+    }
+    '''
+    ), {
+      "desc": "channelFilterDesc"
+    });
+
     _contentWidget = Center(
         child: 
         Column(
@@ -58,7 +72,7 @@ class _FlutterContentState extends State<FlutterContentWidget> {
               constraints: BoxConstraints(minHeight: 200),
             ),
             ConstrainedBox(
-              child: CategoryDescBox(viewModel: SupportViewModel()),
+              child: CategoryDescBox(viewModel: desc),
               constraints: BoxConstraints(minHeight: 54),
             ),
             CategoryFilterBox(

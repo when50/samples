@@ -8,7 +8,7 @@ class CategoryDescBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        child: CategoryRoundRectBox(title: "",),
+        child: CategoryRoundRectBox(title: viewModel.dataWithKey("desc", "AAbA"),),
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 6),
     );
   }

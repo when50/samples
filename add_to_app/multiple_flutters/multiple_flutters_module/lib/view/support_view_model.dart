@@ -1,16 +1,18 @@
+import 'package:json_resolver/json_resolver.dart';
+
 class SupportViewModel {
   Map<String, dynamic> data = {};
   Map<String, String> dataMap = {};
 
-  dynamic dataWithKey(String key) {
+  T dataWithKey<T>(String key, T defaultValue) {
     if (dataMap[key] == null) {
-      return null;
+      return defaultValue;
     }
-    String dataKey = dataMap[key];
+    String dataKey = resolve(json: dataMap, path: key, defaultValue: "");
     if (dataKey == null) {
-      return null;
+      return defaultValue;
     }
-    return data[dataKey];
+    return resolve(json: data, path: dataKey, defaultValue: defaultValue);
   }
 
   void setDataAndMap(Map<String, dynamic> data, Map<String, String> map) {
