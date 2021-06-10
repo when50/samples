@@ -15,6 +15,7 @@
 		0D61B20125BB8FDF00A1A590 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D61B20025BB8FDF00A1A590 /* DataModel.swift */; };
 		0D61B20825BBEA9E00A1A590 /* SingleFlutterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D61B20725BBEA9E00A1A590 /* SingleFlutterViewController.swift */; };
 		0D61B20B25BBF88700A1A590 /* DoubleFlutterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D61B20A25BBF88700A1A590 /* DoubleFlutterViewController.swift */; };
+		5A0EE4A926720AD500F26A12 /* category.json in Resources */ = {isa = PBXBuildFile; fileRef = 5A0EE4A826720AD500F26A12 /* category.json */; };
 		5A1476C82666364800E16458 /* FlutterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1476C72666364800E16458 /* FlutterView.m */; };
 		5A1476CB2666383700E16458 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1476CA2666383700E16458 /* FeedViewController.swift */; };
 		5A1476FB2667A18700E16458 /* FlutterContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1476FA2667A18700E16458 /* FlutterContainerViewController.swift */; };
@@ -38,6 +39,7 @@
 		0D61B20A25BBF88700A1A590 /* DoubleFlutterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleFlutterViewController.swift; sourceTree = "<group>"; };
 		4E03DC90CED28B2143B2CFB1 /* Pods_MultipleFluttersIos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MultipleFluttersIos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F02FEA4EA8C75406BC5FFC5 /* Pods-MultipleFluttersIos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MultipleFluttersIos.release.xcconfig"; path = "Target Support Files/Pods-MultipleFluttersIos/Pods-MultipleFluttersIos.release.xcconfig"; sourceTree = "<group>"; };
+		5A0EE4A826720AD500F26A12 /* category.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = category.json; sourceTree = "<group>"; };
 		5A1476C52666364800E16458 /* MultipleFluttersIos-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MultipleFluttersIos-Bridging-Header.h"; sourceTree = "<group>"; };
 		5A1476C62666364800E16458 /* FlutterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlutterView.h; sourceTree = "<group>"; };
 		5A1476C72666364800E16458 /* FlutterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlutterView.m; sourceTree = "<group>"; };
@@ -96,8 +98,7 @@
 				0D61B20A25BBF88700A1A590 /* DoubleFlutterViewController.swift */,
 				5A1476CA2666383700E16458 /* FeedViewController.swift */,
 				5A89484D266B774C0059B91E /* Model.swift */,
-				5A894849266B6D140059B91E /* data.json */,
-				5A894850266B7AEE0059B91E /* recommend.json */,
+				5A0EE4A726720A9F00F26A12 /* json */,
 			);
 			path = MultipleFluttersIos;
 			sourceTree = "<group>";
@@ -109,6 +110,16 @@
 				4F02FEA4EA8C75406BC5FFC5 /* Pods-MultipleFluttersIos.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		5A0EE4A726720A9F00F26A12 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				5A894849266B6D140059B91E /* data.json */,
+				5A894850266B7AEE0059B91E /* recommend.json */,
+				5A0EE4A826720AD500F26A12 /* category.json */,
+			);
+			path = json;
 			sourceTree = "<group>";
 		};
 		5A4247372663349D008066D6 /* FlutterView */ = {
@@ -196,6 +207,7 @@
 				0D61B1EE25BB8A2400A1A590 /* LaunchScreen.storyboard in Resources */,
 				0D61B1EB25BB8A2400A1A590 /* Assets.xcassets in Resources */,
 				0D61B1E925BB8A2300A1A590 /* Main.storyboard in Resources */,
+				5A0EE4A926720AD500F26A12 /* category.json in Resources */,
 				5A89484A266B6D140059B91E /* data.json in Resources */,
 				5A894851266B7AEE0059B91E /* recommend.json in Resources */,
 			);
