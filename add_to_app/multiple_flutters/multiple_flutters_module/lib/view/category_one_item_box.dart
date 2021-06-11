@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:multiple_flutters_module/models/category_one_item_model.dart';
 import 'package:multiple_flutters_module/view/gap_box.dart';
+import 'package:multiple_flutters_module/view/support_view_model.dart';
 
 class CategoryOneItemBox extends StatelessWidget {
   CategoryOneItemBox({this.viewModel});
-  CategoryOneItemModel viewModel;
+  SupportViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class CategoryOneItemBox extends StatelessWidget {
         children: [
           Expanded(
             child: Image(
-              image:NetworkImage(viewModel.imageUrl), 
+              image:NetworkImage(viewModel.dataWithKey("posterUrl", "")), 
               width: imageWidth,
             ),
             flex: 0,
@@ -27,7 +27,7 @@ class CategoryOneItemBox extends StatelessWidget {
                   Row(
                       children: [
                         Text(
-                          viewModel.title,
+                          viewModel.dataWithKey("title", "title"),
                           style: TextStyle(
                             color: Color(0xd8000000),
                             fontWeight: FontWeight.bold,
@@ -36,7 +36,7 @@ class CategoryOneItemBox extends StatelessWidget {
                         ),
                         Center(
                           child: Text(
-                            viewModel.score,
+                            viewModel.dataWithKey("score", "score"),
                             style: TextStyle(
                               color: Color(0xfffca017),
                               fontSize: 11,
@@ -49,7 +49,7 @@ class CategoryOneItemBox extends StatelessWidget {
                     GapBox(height:8, width: 0),
                     ConstrainedBox(
                         child: Text(
-                          viewModel.desc,
+                          viewModel.dataWithKey("intro", "intro"),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -61,7 +61,7 @@ class CategoryOneItemBox extends StatelessWidget {
                     ),
                     GapBox(height:13, width: 0),
                     Text(
-                      viewModel.info,
+                      viewModel.dataWithKey("info", "info"),
                       style: TextStyle(
                         color: Color(0x66000000),
                         fontSize: 12,
