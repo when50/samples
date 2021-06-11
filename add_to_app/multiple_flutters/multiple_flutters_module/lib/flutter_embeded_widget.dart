@@ -53,12 +53,12 @@ class _FlutterContentState extends State<FlutterContentWidget> {
               constraints: BoxConstraints(minHeight: 200),
             ),
             ConstrainedBox(
-              child: CategoryDescBox(viewModel: vm.desc),
+              child: CategoryDescBox(viewModel: vm.categoryDesc),
               constraints: BoxConstraints(minHeight: 54),
             ),
             ConstrainedBox(
               child: CategoryFilterBox(
-                viewModel: vm.filter,
+                viewModel: vm.categoryFilter,
                 selectedColor: Color(0xffff9510),
                 normalColor: Color(0x99000000),
                 childTapInvoke: (index) {
@@ -88,6 +88,15 @@ class _FlutterContentState extends State<FlutterContentWidget> {
               var model = OneItemModel.fromJson(modelMap);
               _contentWidget = HomeOneItemBox(model, () => invokeTap());
               break;
+            case "categoryDesc":
+              _contentWidget = CategoryDescBox(viewModel: ViewModel.categoryDescViewModel(modelMap));
+            break;
+            case "categoryFilter":
+              _contentWidget = CategoryDescBox(viewModel: ViewModel.categoryFilterViewModel(modelMap));
+            break;
+            case "categoryItem":
+              _contentWidget = CategoryDescBox(viewModel: ViewModel.categoryItemViewModel(modelMap));
+            break;
           }
           // _contentWidget = Text("2" + call.arguments);
         });

@@ -5,23 +5,62 @@ import 'package:multiple_flutters_module/view/support_view_model.dart';
 import 'dart:convert';
 
 class ViewModel {
-  SupportViewModel desc = (){
-    SupportViewModel vm = SupportViewModel();
-    vm.setDataAndMap(json.decode(
+  static SupportViewModel categoryDescViewModel(Map<String, dynamic> data) {
+    dynamic raw = json.decode(
+      '''
+        {
+          "desc": "channelFilterDesc"
+        }
+      '''
+    );
+    Map<String, String> map = Map<String, String>.from(raw);
+    return SupportViewModel(data: data, dataMap: map);
+  }
+
+  static SupportViewModel categoryFilterViewModel(Map<String, dynamic> data) {
+    dynamic raw = json.decode(
+      '''
+        {
+          "titles": "itemViewModels"
+        }
+      '''
+    );
+    Map<String, String> map = Map<String, String>.from(raw);
+    return SupportViewModel(data: data, dataMap: map);
+  }
+
+  static SupportViewModel categoryItemViewModel(Map<String, dynamic> data) {
+    dynamic raw = json.decode(
+      '''
+        {
+          "posterUrl": "itemPic",
+          "title": "itemTitle",
+          "score": "itemScore",
+          "intro": "dataModel.intro",
+          "info": "itemInfo"
+        }
+      '''
+    );
+    Map<String, String> map = Map<String, String>.from(raw);
+    return SupportViewModel(data: data, dataMap: map);
+  }
+
+  SupportViewModel categoryDesc = (){
+    dynamic raw = json.decode(
       '''
       {
         "channelFilterDesc":"作品主角大多为特种兵，铁血坚毅"
       }
       '''
-    ), {
-      "desc": "channelFilterDesc"
-    });
-    return vm;
+    );
+    Map<String, dynamic> data = Map<String, dynamic>.from(raw);
+    return categoryDescViewModel(data);
   }();
+  
     
-  SupportViewModel filter = (){
-    SupportViewModel vm = SupportViewModel();
-    vm.setDataAndMap(json.decode(
+
+  SupportViewModel categoryFilter = (){
+    dynamic raw = json.decode(
       '''
       {
             "itemViewModels":[
@@ -57,10 +96,64 @@ class ViewModel {
             "filterCellHeight":38
         }
       '''
-    ), {
-      "titles": "itemViewModels"
-    });
-    return vm;
+    );
+    Map<String, dynamic> data = Map<String, dynamic>.from(raw);
+    return categoryFilterViewModel(data);
+  }();
+
+  SupportViewModel categoryItem = () {
+    dynamic raw = json.decode(
+      '''
+      {
+            "itemInfo":"秋微·106万字·已完结",
+            "itemTitle":"重生欢宠：七少撩妻有道",
+            "dataModel":{
+                "siteType":0,
+                "chapterCount":0,
+                "pay":0,
+                "words":1059359,
+                "readerNum":94144,
+                "searchPercent":0,
+                "score":"8.3999996185302734",
+                "intro":"前世的杨丹颜被渣男和小三联手算计，一尸两命，父母也受连累死于非命，当她以为自己已深处地狱时，却发现自己重生了，还躺在了江城首富云暮城的床上，还翻云覆雨了一番，醒来后悄咪咪赶紧溜了。 ",
+                "cover":"http://s.dyreader.cn/2019/08/30/1143713283363282944_360_480.jpeg",
+                "majorRoles":[
+                    "杨丹颜",
+                    "云暮城",
+                    "齐天楚"
+                ],
+                "authors":[
+                    "秋微"
+                ],
+                "sourceName":"鲸鱼阅读",
+                "alias":[
+
+                ],
+                "name":"重生欢宠：七少撩妻有道",
+                "detailUrl":"",
+                "id":"1143713283363282944",
+                "sourceId":"40",
+                "finish":true,
+                "bookType":1,
+                "displayTag":[
+                    {
+                        "name":"老书虫都在读",
+                        "id":"22863"
+                    },
+                    {
+                        "name":"手撕绿茶",
+                        "id":"22909"
+                    }
+                ]
+            },
+            "itemPic":"http://s.dyreader.cn/2019/08/30/1143713283363282944_360_480.jpeg",
+            "itemDesc":"前世的杨丹颜被渣男和小三联手算计，一尸两命，父母也受连累死于非命，当她以为自己已深处地狱时，却发现自己重生了，还躺在了江城首富云暮城的床上，还翻云覆雨了一番，醒来后悄咪咪赶紧溜了",
+            "itemScore":"8.4分"
+        }
+      '''
+    );
+    Map<String, dynamic> data = Map<String, dynamic>.from(raw);
+    return categoryItemViewModel(data);
   }();
 
   FourtItems fourItems = (){
@@ -114,66 +207,5 @@ class ViewModel {
 				}]
 			}
             ''');
-  }();
-
-  SupportViewModel categoryItem = () {
-    SupportViewModel vm = SupportViewModel();
-    vm.setDataAndMap(json.decode(
-      '''
-      {
-            "itemInfo":"秋微·106万字·已完结",
-            "itemTitle":"重生欢宠：七少撩妻有道",
-            "dataModel":{
-                "siteType":0,
-                "chapterCount":0,
-                "pay":0,
-                "words":1059359,
-                "readerNum":94144,
-                "searchPercent":0,
-                "score":"8.3999996185302734",
-                "intro":"前世的杨丹颜被渣男和小三联手算计，一尸两命，父母也受连累死于非命，当她以为自己已深处地狱时，却发现自己重生了，还躺在了江城首富云暮城的床上，还翻云覆雨了一番，醒来后悄咪咪赶紧溜了。 ",
-                "cover":"http://s.dyreader.cn/2019/08/30/1143713283363282944_360_480.jpeg",
-                "majorRoles":[
-                    "杨丹颜",
-                    "云暮城",
-                    "齐天楚"
-                ],
-                "authors":[
-                    "秋微"
-                ],
-                "sourceName":"鲸鱼阅读",
-                "alias":[
-
-                ],
-                "name":"重生欢宠：七少撩妻有道",
-                "detailUrl":"",
-                "id":"1143713283363282944",
-                "sourceId":"40",
-                "finish":true,
-                "bookType":1,
-                "displayTag":[
-                    {
-                        "name":"老书虫都在读",
-                        "id":"22863"
-                    },
-                    {
-                        "name":"手撕绿茶",
-                        "id":"22909"
-                    }
-                ]
-            },
-            "itemPic":"http://s.dyreader.cn/2019/08/30/1143713283363282944_360_480.jpeg",
-            "itemDesc":"前世的杨丹颜被渣男和小三联手算计，一尸两命，父母也受连累死于非命，当她以为自己已深处地狱时，却发现自己重生了，还躺在了江城首富云暮城的床上，还翻云覆雨了一番，醒来后悄咪咪赶紧溜了",
-            "itemScore":"8.4分"
-        }
-      '''
-    ), {
-      "posterUrl": "itemPic",
-      "title": "itemTitle",
-      "score": "itemScore",
-      "intro": "dataModel.intro",
-      "info": "itemInfo",
-    });
-    return vm;
   }();
 }

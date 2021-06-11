@@ -26,9 +26,7 @@ class _CategoryFilterBoxState extends State<CategoryFilterBox> {
   Widget build(BuildContext context) {
     List<dynamic> titles = widget.viewModel.dataWithKey("titles", []);
     List<SupportViewModel> titleViewModels = titles.map((e) {
-      SupportViewModel vm = SupportViewModel();
-      vm.setDataAndMap(Map<String, dynamic>.from(e), {"title": "filterText"});
-      return vm;
+      return SupportViewModel(data: Map<String, dynamic>.from(e), dataMap: {"title": "filterText"});
     }).toList();
     return ConstrainedBox(
       child: ListView.separated(

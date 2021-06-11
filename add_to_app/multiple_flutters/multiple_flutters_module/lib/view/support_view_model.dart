@@ -1,6 +1,7 @@
 import 'package:json_resolver/json_resolver.dart';
 
 class SupportViewModel {
+  SupportViewModel({this.data, this.dataMap});
   Map<String, dynamic> data = {};
   Map<String, String> dataMap = {};
 
@@ -13,10 +14,5 @@ class SupportViewModel {
       return defaultValue;
     }
     return resolve(json: data, path: dataKey, defaultValue: defaultValue);
-  }
-
-  void setDataAndMap(Map<String, dynamic> data, Map<String, String> map) {
-    this.data = data;
-    this.dataMap = map;
   }
 }
