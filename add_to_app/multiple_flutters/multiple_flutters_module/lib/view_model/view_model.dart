@@ -36,7 +36,7 @@ class ViewModel {
           "posterUrl": "itemPic",
           "title": "itemTitle",
           "score": "itemScore",
-          "intro": "dataModel.intro",
+          "intro": "itemDesc",
           "info": "itemInfo"
         }
       '''

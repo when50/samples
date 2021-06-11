@@ -8,6 +8,22 @@
 import Foundation
 import ObjectMapper
 
+class CategoryViewModel: NSObject, Mappable {
+    var desc: [String: String]?
+    var filters: [[String: Any]]?
+    var books: [[String: Any]]?
+    
+    required init?(map: Map) {
+        
+    }
+    
+    func mapping(map: Map) {
+        desc <- map["desc"]
+        filters <- map["filters"]
+        books <- map["books"]
+    }
+}
+
 class Response: NSObject, Mappable {
     var code: Int!
     var ts: UInt!

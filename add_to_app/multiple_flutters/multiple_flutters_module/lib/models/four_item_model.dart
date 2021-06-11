@@ -47,7 +47,6 @@ class Items {
       {this.cover, this.title});
 
   Items.fromJson(Map<String, dynamic> json) {
-    print("covert items: $json");
     cover = json['cover'];
     title = json['title'];
     // score = json['score'];

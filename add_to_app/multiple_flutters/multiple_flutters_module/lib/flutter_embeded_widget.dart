@@ -90,13 +90,13 @@ class _FlutterContentState extends State<FlutterContentWidget> {
               break;
             case "categoryDesc":
               _contentWidget = CategoryDescBox(viewModel: ViewModel.categoryDescViewModel(modelMap));
-            break;
+              break;
             case "categoryFilter":
-              _contentWidget = CategoryDescBox(viewModel: ViewModel.categoryFilterViewModel(modelMap));
-            break;
+              _contentWidget = CategoryFilterBox(viewModel: ViewModel.categoryFilterViewModel(modelMap));
+              break;
             case "categoryItem":
-              _contentWidget = CategoryDescBox(viewModel: ViewModel.categoryItemViewModel(modelMap));
-            break;
+              _contentWidget = CategoryOneItemBox(viewModel: ViewModel.categoryItemViewModel(modelMap));
+              break;
           }
           // _contentWidget = Text("2" + call.arguments);
         });
