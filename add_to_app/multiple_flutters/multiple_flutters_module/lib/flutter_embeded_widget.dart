@@ -95,7 +95,7 @@ class _FlutterContentState extends State<FlutterContentWidget> {
               _contentWidget = CategoryFilterBox(viewModel: ViewModel.categoryFilterViewModel(modelMap));
               break;
             case "categoryItem":
-              _contentWidget = CategoryOneItemBox(viewModel: ViewModel.categoryItemViewModel(modelMap));
+              _contentWidget = CategoryOneItemBox(viewModel: ViewModel.categoryItemViewModel(modelMap), tapInvoke: () => invokeTap());
               break;
           }
           // _contentWidget = Text("2" + call.arguments);

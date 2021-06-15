@@ -58,32 +58,39 @@ class FlutterContainerViewController: FlutterViewController, DataModelObserver {
       channel.invokeMethod("setCount", arguments: newCount)
     }
   }
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    channel = FlutterMethodChannel(
-      name: "setup-content", binaryMessenger: self.engine!.binaryMessenger)
-    channel!.invokeMethod("setCount", arguments: DataModel.shared.count)
-    if (self.navigationController == nil) {
-        return;
+    
+    override func didMove(toParent parent: UIViewController?) {
+        guard let _ = parent else {
+            channel = nil
+            return
+        }
+        setupChannel()
     }
-    let navController = self.navigationController!
-    channel!.setMethodCallHandler { [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) in
-        self?.flutterInvokeBlock?(call.method, call.arguments)
-//        if call.method == "click" {
-//            print("flutter call click")
-//        }
-//      else if call.method == "incrementCount" {
-//        DataModel.shared.count = DataModel.shared.count + 1
-//        result(nil)
-//      } else if call.method == "next" {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "NativeViewCount")
-//        navController.pushViewController(vc, animated: true)
-//        result(nil)
-//      } else {
-//        result(FlutterMethodNotImplemented)
-//      }
+    
+    @objc func setupChannel() {
+        channel = FlutterMethodChannel(
+          name: "setup-content", binaryMessenger: self.engine!.binaryMessenger)
+        channel!.invokeMethod("setCount", arguments: DataModel.shared.count)
+        if (self.navigationController == nil) {
+            return;
+        }
+        let navController = self.navigationController!
+        channel!.setMethodCallHandler { [weak self] (call: FlutterMethodCall, result: @escaping FlutterResult) in
+            self?.flutterInvokeBlock?(call.method, call.arguments)
+    //        if call.method == "click" {
+    //            print("flutter call click")
+    //        }
+    //      else if call.method == "incrementCount" {
+    //        DataModel.shared.count = DataModel.shared.count + 1
+    //        result(nil)
+    //      } else if call.method == "next" {
+    //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    //        let vc = storyboard.instantiateViewController(withIdentifier: "NativeViewCount")
+    //        navController.pushViewController(vc, animated: true)
+    //        result(nil)
+    //      } else {
+    //        result(FlutterMethodNotImplemented)
+    //      }
+        }
     }
-  }
 }
