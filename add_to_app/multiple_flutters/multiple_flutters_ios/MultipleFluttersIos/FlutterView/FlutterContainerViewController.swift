@@ -25,6 +25,16 @@ class FlutterContainerViewController: FlutterViewController, DataModelObserver {
     @objc
     static func cache(viewController: FlutterContainerViewController) {
         cachePool.insert(viewController)
+        viewController.cacheView()
+    }
+    
+    func cacheView() {
+        guard let rootVC = UIApplication.shared.keyWindow?.rootViewController else { return }
+        rootVC.addChild(self)
+        self.view.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
+        rootVC.view.addSubview(self.view)
+        rootVC.view.sendSubviewToBack(self.view)
+        didMove(toParent: rootVC)
     }
 
   @objc
