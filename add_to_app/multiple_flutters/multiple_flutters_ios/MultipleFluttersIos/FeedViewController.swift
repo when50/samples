@@ -83,7 +83,7 @@ class FeedViewController: UITableViewController {
 
         if let cell = cell as? FlutterTableViewCell {
             if cell.flutterView == nil {
-                cell.flutterView = FlutterView(controller: self, viewIdentifier: "cell2")
+                cell.flutterView = DNFlutterView(controller: self, viewIdentifier: "cell2")
             }
             cell.flutterView?.setFlutterCall({ [weak self] (method, arguments) in
                 var message = ""

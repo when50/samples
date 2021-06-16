@@ -6,13 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FlutterView.h"
+#import "DNFlutterView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FlutterTableViewCell : UITableViewCell
 
-@property (nonatomic, strong, nullable) FlutterView *flutterView;
+@property (nonatomic, strong, nullable) DNFlutterView *flutterView;
 
 @end
 

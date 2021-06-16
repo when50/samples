@@ -12,7 +12,7 @@
 
 @implementation FlutterTableViewCell
 
-- (void)setFlutterView:(FlutterView *)flutterView {
+- (void)setFlutterView:(DNFlutterView *)flutterView {
     _flutterView = flutterView;
     flutterView.frame = self.contentView.bounds;
     [self.contentView addSubview:flutterView];

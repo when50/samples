@@ -5,7 +5,7 @@
 //  Created by oneko on 2021/6/1.
 //
 
-#import "FlutterView.h"
+#import "DNFlutterView.h"
 #import "MultipleFluttersIos-Swift.h"
 
 @interface UpdateViewObject: NSObject
@@ -29,7 +29,7 @@
 @end
 
 
-@interface FlutterView ()
+@interface DNFlutterView ()
 
 @property (nonatomic, weak) UIViewController    *embedingController;
 @property (nonatomic, weak) FlutterContainerViewController    *embededController;
@@ -39,7 +39,7 @@
 
 @end
 
-@implementation FlutterView
+@implementation DNFlutterView
 
 - (void)dealloc {
     if (_embededController) {
@@ -75,7 +75,7 @@
 }
 
 - (void)setFlutterInvokeBlock {
-    __weak FlutterView *wself = self;
+    __weak DNFlutterView *wself = self;
     self.embededController.flutterInvokeBlock = ^(NSString * _Nonnull method, id _Nonnull argugments) {
         if (wself.flutterCallBlock) {
             wself.flutterCallBlock(method, argugments);
@@ -110,20 +110,23 @@
 
 #pragma mark - private
 - (void)loadFlutterView {
-    
     FlutterContainerViewController *vc = [FlutterContainerViewController viewController];
     if (vc == nil) {
         vc =  [[FlutterContainerViewController alloc] initWithEntrypoint:self.viewIdentifier libraryURI:nil];
     }
     
-    [self.embedingController addChildViewController:vc];
-    
-    vc.view.frame = self.bounds;
-    [self addSubview:vc.view];
-    
-    [vc didMoveToParentViewController:self.embedingController];
+    [self attachFlutterView:vc];
     
     self.embededController = vc;
+}
+
+- (void)attachFlutterView:(FlutterViewController *)viewController {
+    [self.embedingController addChildViewController:viewController];
+    
+    viewController.view.frame = self.bounds;
+    [self addSubview:viewController.view];
+    
+    [viewController didMoveToParentViewController:self.embedingController];
 }
 
 @end

@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void (^FlutterCallBlock)(NSString *, id);
 
-@interface FlutterView : UIView
+@interface DNFlutterView : UIView
 
 - (instancetype)initWithController:(UIViewController *)controller
                     viewIdentifier:(NSString *)viewIdentifier;

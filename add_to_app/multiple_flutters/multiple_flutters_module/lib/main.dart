@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'flutter_embeded_widget.dart';
 
-void main() => runApp(FlutterEmbededWidget());
+void main() => runApp(MyApp(Colors.blue));
 
 @pragma('vm:entry-point')
 void topMain() => runApp(MyApp(Colors.green));

@@ -75,35 +75,47 @@ class _FlutterContentState extends State<FlutterContentWidget> {
       );
     _channel = MethodChannel("setup-content");
     _channel.setMethodCallHandler((MethodCall call) async {
+
+        print("${call.method}");
+      if (call.method == "reset") {
+        setState() {
+          print("invoke reset");
+          _contentWidget = Center();
+        }
+      }
       if (call.method == "updateView") {
         Map map = call.arguments as Map;
         setState(() {
           var modelMap = Map<String, dynamic>.from(map["viewModel"]);
-          switch (map["viewName"] as String) {
-            case "10":
-              var model = FourtItems.fromJson(modelMap);
-              _contentWidget = FourItemsBox(model, (int childIndex) => invokeChildTap(childIndex));
-              break;
-            case "9":
-              var model = OneItemModel.fromJson(modelMap);
-              _contentWidget = HomeOneItemBox(model, () => invokeTap());
-              break;
-            case "categoryDesc":
-              _contentWidget = CategoryDescBox(viewModel: ViewModel.categoryDescViewModel(modelMap));
-              break;
-            case "categoryFilter":
-              _contentWidget = CategoryFilterBox(viewModel: ViewModel.categoryFilterViewModel(modelMap));
-              break;
-            case "categoryItem":
-              _contentWidget = CategoryOneItemBox(viewModel: ViewModel.categoryItemViewModel(modelMap), tapInvoke: () => invokeTap());
-              break;
-          }
+          updateView(map["viewName"] as String, modelMap);
           // _contentWidget = Text("2" + call.arguments);
         });
       } else {
         throw Exception('not implemented ${call.method}');
       }
     });
+  }
+
+  void updateView(String viewName, Map<String, dynamic> modelMap) {
+    switch (viewName) {
+      case "10":
+        var model = FourtItems.fromJson(modelMap);
+        _contentWidget = FourItemsBox(model, (int childIndex) => invokeChildTap(childIndex));
+        break;
+      case "9":
+        var model = OneItemModel.fromJson(modelMap);
+        _contentWidget = HomeOneItemBox(model, () => invokeTap());
+        break;
+      case "categoryDesc":
+        _contentWidget = CategoryDescBox(viewModel: ViewModel.categoryDescViewModel(modelMap));
+        break;
+      case "categoryFilter":
+        _contentWidget = CategoryFilterBox(viewModel: ViewModel.categoryFilterViewModel(modelMap));
+        break;
+      case "categoryItem":
+        _contentWidget = CategoryOneItemBox(viewModel: ViewModel.categoryItemViewModel(modelMap), tapInvoke: () => invokeTap());
+        break;
+    }
   }
 
   @override

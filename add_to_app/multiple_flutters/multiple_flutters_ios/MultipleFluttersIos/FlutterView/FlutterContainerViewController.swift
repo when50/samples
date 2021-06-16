@@ -12,6 +12,7 @@ import Foundation
 /// instead of inheritence.
 class FlutterContainerViewController: FlutterViewController, DataModelObserver {
   private var channel: FlutterMethodChannel?
+    static var engine: FlutterEngine?
   static var cachePool = Set<FlutterContainerViewController>()
     @objc
     var flutterInvokeBlock: ((String, Any) -> Void)?
@@ -24,11 +25,13 @@ class FlutterContainerViewController: FlutterViewController, DataModelObserver {
     
     @objc
     static func cache(viewController: FlutterContainerViewController) {
+        guard !cachePool.contains(viewController) else { return }
         cachePool.insert(viewController)
-        viewController.cacheView()
+//        viewController.cacheView()
     }
     
     func cacheView() {
+//        channel!.invokeMethod("reset", arguments: nil);
         guard let rootVC = UIApplication.shared.keyWindow?.rootViewController else { return }
         rootVC.addChild(self)
         self.view.frame = CGRect(x: 0, y: 0, width: 1, height: 1)
@@ -40,8 +43,13 @@ class FlutterContainerViewController: FlutterViewController, DataModelObserver {
   @objc
   init(withEntrypoint entryPoint: String?, libraryURI: String?) {
     let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-    let newEngine = appDelegate.engines.makeEngine(withEntrypoint: entryPoint, libraryURI: libraryURI)
-    super.init(engine: newEngine, nibName: nil, bundle: nil)
+    if let engine = FlutterContainerViewController.engine {
+        super.init(engine: engine, nibName: nil, bundle: nil)
+    } else {
+        let newEngine = appDelegate.engines.makeEngine(withEntrypoint: entryPoint, libraryURI: libraryURI)
+        super.init(engine: newEngine, nibName: nil, bundle: nil)
+//        FlutterContainerViewController.engine = newEngine
+    }
     DataModel.shared.addObserver(observer: self)
   }
     
