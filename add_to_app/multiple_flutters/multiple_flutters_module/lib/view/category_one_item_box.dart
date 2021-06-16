@@ -13,18 +13,17 @@ class CategoryOneItemBox extends StatelessWidget implements SupportTap {
     double imageWidth = (MediaQuery.of(context).size.width - 55) / 4;
     double textWidth = MediaQuery.of(context).size.width - 55 - imageWidth;
     return GestureDetector(
-      child: Padding(
+      child: Container(
         child: Row(
           children: [
-            Expanded(
-              child: Image(
-                image:NetworkImage(viewModel.dataWithKey("posterUrl", "")), 
-                width: imageWidth,
-              ),
-              flex: 0,
+            Image(
+              image:NetworkImage(viewModel.dataWithKey("posterUrl", "")), 
+              width: imageWidth,
             ),
             Expanded(
-              child: Padding(
+              child: Container(
+                // decoration: BoxDecoration(color: Colors.red),
+                height: 120,
                 child: Column(
                   children: [
                     Row(
@@ -48,10 +47,11 @@ class CategoryOneItemBox extends StatelessWidget implements SupportTap {
                           ),
                         ],
                         mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       ),
-                      GapBox(height:8, width: 0),
-                      ConstrainedBox(
-                          child: Text(
+                      // GapBox(height:8, width: 0),
+                      Container(
+                        child:  Text(
                             viewModel.dataWithKey("intro", "intro"),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
@@ -59,10 +59,10 @@ class CategoryOneItemBox extends StatelessWidget implements SupportTap {
                               color: Color(0x99000000),
                               fontSize: 12,
                             ),
-                          ),
-                          constraints: BoxConstraints(maxWidth: textWidth),
+                        ),
+                        height: 50,
                       ),
-                      GapBox(height:13, width: 0),
+                      // GapBox(height:13, width: 0),
                       Text(
                         viewModel.dataWithKey("info", "info"),
                         style: TextStyle(
@@ -72,11 +72,10 @@ class CategoryOneItemBox extends StatelessWidget implements SupportTap {
                       ),
                   ],
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 ),
                 padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
               ),
-              flex: 1,
             ),
           ],
           crossAxisAlignment: CrossAxisAlignment.start,
